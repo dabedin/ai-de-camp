@@ -13,7 +13,7 @@ Therefore I had this idea: what if I could find a way to leverage AI to help the
 
 ## First test
 
-Using Azure OpenAI Studio playground on a GPT4o deployment, revised a prompt to calculate the outcome of a wargame action, with the following goals:
+Using Azure OpenAI Studio playground on a GPT4o deployment, revised a [prompt](sample/simple-prompt/ChatSetup.json) to calculate the outcome of a wargame action, with the following goals:
 1. Identify the firing and target toy soldier figurine in a simple set
 2. Understand figurine pose: prone, crouched, standing
 3. Identify the weapon used by the figurine
