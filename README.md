@@ -7,9 +7,9 @@ Playing with the words ["AI"](https://learn.microsoft.com/en-us/ai/playbook/tech
 
 ## A (little) story first
 
-I loved playing with 1:72 toy soldiers as a kid, especially from Napoleonic Wars and WWII, yet not reaching the "proper" tabletop wargaming level proficiency.
-40 years forward, my kids found my collection of unpainted toy soldiers and started playing with them, creating their own scenarios and rules. Rules so complex that a signle action would take ages to process.
-Therefore I had this idea: what if I could find a way to leverage AI to help them in their game?
+I loved playing with 1:72 toy soldiers as a kid, especially from Napoleonic Wars and WWII, yet not reaching the "proper" tabletop wargaming level proficiency.  
+40 years forward, my kids found my collection of unpainted toy soldiers and started playing with them, creating their own scenarios and rules. Rules so complex that a signle action would take ages to process.  
+Therefore I had this idea: what if I could find a way to leverage AI to help them in their game, taking the opportunity to experiment with GenAI to create a Copilot, or even better, an AI-de-camp?
 
 ## First test
 
