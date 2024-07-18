@@ -1,5 +1,5 @@
 # AI-de-camp
-Playing with the words ["AI"](https://learn.microsoft.com/en-us/ai/playbook/technology-guidance/generative-ai/) and ["aide-de-camp"](https://en.wikipedia.org/wiki/Aide-de-camp), this repository is an experiment on how GenerativeAI could be leveraged in wargaming, starting with simple 1:72 toy soldier and maybe, in the future, addressing proper tabletop wargaming scenario.
+Playing with the words ["AI"](https://learn.microsoft.com/en-us/ai/playbook/technology-guidance/generative-ai/) and ["aide-de-camp"](https://en.wikipedia.org/wiki/Aide-de-camp), this repository is a learning experiment on how GenerativeAI could be leveraged in wargaming, starting with simple 1:72 toy soldier figurines and maybe, in the future, addressing proper tabletop wargaming scenario.
 
 <img src="docs/AI-de-camp%20design.png" alt="AI-de-camp" style="width:50%;">
 
@@ -13,12 +13,12 @@ Therefore I had this idea: what if I could find a way to leverage AI to help the
 
 ## First test
 
-Using Azure OpenAI Studio playground on a GPT4o deployment, help calculate the outcome of a wargame action, with the following goals:
-- Identify the firing and target toy soldiers
-- Understand pose: prone, crouched, standing
-- Identify weapon: rifle, machine gun, submachine gun, pistol
-- Estimate distance
-- Calculate all modifiers, draw a random number and calculate the outcome
+Using Azure OpenAI Studio playground on a GPT4o deployment, revised a prompt to calculate the outcome of a wargame action, with the following goals:
+1. Identify the firing and target toy soldier figurine in a simple set
+2. Understand figurine pose: prone, crouched, standing
+3. Identify the weapon used by the figurine
+4. Estimate distance
+5. Apply all modifiers, draw a random number and calculate the outcome
 
 It's just a starting point, but it's a good one.
 
