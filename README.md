@@ -30,6 +30,7 @@ Here are the progresses on this silly project:
 ## aidecamp-prompt
 
 See the [prompt](aidecamp-simple-prompt/) for the first test.
+
 Using Azure OpenAI Studio playground on a GPT4o deployment, revised a [prompt](aidecamp-simple-prompt/ChatSetup.json) to calculate the outcome of a wargame action, with the following goals:
 1. Identify the firing and target toy soldier figurine in a simple set
 2. Understand figurine pose: prone, crouched, standing
@@ -43,6 +44,7 @@ It's just a starting point, but it's a good one.
 
 ## aidecamp-console
 
-See the [prompt](aidecamp-console/) for the first console test leveraging (Semantic Kernel)[https://learn.microsoft.com/en-us/semantic-kernel/overview/].
+See the [prompt](aidecamp-console/) for the first console test leveraging [Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/overview/).
+
 Implemented a simple console application to test the Semantic Kernel approach to the scenario.
 A test image is passed with the user prompt to a GPT-4o model, the [prompt](aidecamp-console/Prompts/HandleCombat/) is configured as a file base plugin.
