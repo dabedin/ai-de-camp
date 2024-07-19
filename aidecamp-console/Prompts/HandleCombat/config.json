@@ -1,0 +1,19 @@
+{
+    "schema": 1,
+    "type": "completion",
+    "description": "Handle the combat action between two opposing toy soldiers",
+    "execution_settings": {
+        "default": {
+            "max_tokens": 800,
+            "temperature": 0.2,
+            "top_p": 0.95,
+        }
+    },
+    "input_variables": [
+        {
+            "name": "input",
+            "description": "The user's image and possibly other information",
+            "required": true
+        }
+    ]
+}
