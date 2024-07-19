@@ -24,7 +24,7 @@ Here is a high-level plan for the project:
 # Work in progress
 
 Here are the progresses on this silly project:
-- [Simple prmmpt](#aidecamp-prompt)
+- [Simple prompt](#aidecamp-prompt)
 - [Semantic Kernel from a console](#aidecamp-console)
 
 ## aidecamp-prompt
