@@ -43,6 +43,6 @@ It's just a starting point, but it's a good one.
 
 ## aidecamp-console
 
-See the [prompt](aidecamp-console/) for the first test.
+See the [prompt](aidecamp-console/) for the first console test leveraging (Semantic Kernel)[https://learn.microsoft.com/en-us/semantic-kernel/overview/].
 Implemented a simple console application to test the Semantic Kernel approach to the scenario.
 A test image is passed with the user prompt to a GPT-4o model, the [prompt](aidecamp-console/Prompts/HandleCombat/) is configured as a file base plugin.
