@@ -1,9 +1,10 @@
 # AI-de-camp
 Playing with the words ["AI"](https://learn.microsoft.com/en-us/ai/playbook/technology-guidance/generative-ai/) and ["aide-de-camp"](https://en.wikipedia.org/wiki/Aide-de-camp), this repository is a learning experiment on how GenerativeAI could be leveraged in wargaming, starting with simple 1:72 toy soldier figurines and maybe, in the future, addressing proper tabletop wargaming scenario.
 
-<img src="docs/AI-de-camp%20design.png" alt="AI-de-camp" style="width:50%;">
-
-*You are a wargaming assistant, helping gamers to calculate modifiers of a firing toy soldier against a target toy soldier.*
+<div style="text-align: center;">
+    <img src="docs/AI-de-camp%20design.png" alt="AI-de-camp" style="width:50%;">
+    <p><em>You are a wargaming assistant, helping gamers to calculate modifiers of a firing toy soldier against a target toy soldier</em></p>
+</div>
 
 ## A (little) story first
 
