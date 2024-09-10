@@ -1,0 +1,23 @@
+{
+    "firing": {
+        "coordinates": {
+            "x": 150,
+            "y": 200
+        },
+        "pose": "standing",
+        "weapon": "rifle"
+    },
+    "target": {
+        "coordinates": {
+            "x": 300,
+            "y": 250
+        },
+        "pose": "crouched",
+        "weapon": "pistol"
+    },
+    "distance": {
+        "value": 90,
+        "unit": "cm",
+        "estimated": true
+    }
+}

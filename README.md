@@ -14,7 +14,7 @@ Therefore I had this idea: what if I could find a way to leverage AI to help the
 ## (a) Plan
 
 Here is a high-level plan for the project:
-- [ ] Create a simple orchestration API, leveraging Semantic Kernel, with rich logging
+- [x] Create a simple orchestration API, leveraging Semantic Kernel, with rich logging
 - [ ] Create a simple UX to ease up the tests from a mobile device
 - [ ] Address pain points:
     - [ ] Estimate distance, from different point of views and perspectives
@@ -26,6 +26,7 @@ Here is a high-level plan for the project:
 Here are the progresses on this silly project:
 - [Simple prompt](#aidecamp-prompt)
 - [Semantic Kernel from a console](#aidecamp-console)
+- [Semantic Kernel with plugin(s) and automatic planning](#aidecamp-plugins-native-console)
 
 ## aidecamp-prompt
 
@@ -48,3 +49,14 @@ See the [prompt](aidecamp-console/) for the first console test leveraging [Seman
 
 Implemented a simple console application to test the Semantic Kernel approach to the scenario.
 A test image is passed with the user prompt to a GPT-4o model, the [prompt](aidecamp-console/Prompts/HandleCombat/) is configured as a file base plugin.
+
+## aidecamp-plugins-native-console
+
+The [project](aidecamp-plugins-native-console/) is an evolution of console test leveraging [Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/overview/) with few major additions:
+- Switched to [Azure.AI.OpenAI SDK support](https://devblogs.microsoft.com/semantic-kernel/support-for-azure-ai-openai-and-openai-v2-is-here/) in >=1.18.1 version of Semantic Kernel.
+- Implemented [rich logging](https://devblogs.microsoft.com/semantic-kernel/unlock-the-power-of-telemetry-in-semantic-kernel-sdk/) to understand the flow of the application and the Semantic Kernel interaction.
+- Use of Semantic Kernel [native code plugin](https://learn.microsoft.com/en-us/semantic-kernel/concepts/plugins/adding-native-plugins?pivots=programming-language-csharp) to move the calculation of modifiers and outcome outside of the prompt.
+- Via [automatic function calling](https://devblogs.microsoft.com/semantic-kernel/planning-with-semantic-kernel-using-automatic-function-calling/), application code is not instructing to pick the right plugin, Semantic Kernel is facilitating it via automatic planning logic. 
+- Leveraging Json response format so the application code can be more flexible in handling the response.
+
+While mine is a (very) simple example, it's a good starting point to understand how to leverage Semantic Kernel in a more complex scenario.

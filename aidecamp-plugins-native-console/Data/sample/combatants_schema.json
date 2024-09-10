@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "combatant": {
+            "type": "object",
+            "properties": {
+                "coordinates": {
+                    "type": "object",
+                    "properties": {
+                        "x": { "type": "integer" },
+                        "y": { "type": "integer" }
+                    },
+                    "required": ["x", "y"]
+                },
+                "pose": {
+                    "type": "string",
+                    "enum": ["standing", "prone", "crouched"]
+                },
+                "weapon": {
+                    "type": "string",
+                    "enum": ["rifle", "machine gun", "pistol", "SMG"]
+                }
+            },
+            "required": ["coordinates", "pose", "weapon"]
+        }
+    },
+    "type": "object",
+    "properties": {
+        "firing": {
+            "$ref": "#/definitions/combatant"
+        },
+        "target": {
+            "$ref": "#/definitions/combatant"
+        },
+        "distance": {
+            "type": "object",
+            "properties": {
+                "value": { "type": "integer" },
+                "unit": { "type": "string" },
+                "estimated": { "type": "boolean" }
+            },
+            "required": ["value", "unit", "estimated"]
+        }
+    },
+    "required": ["firing", "target", "distance"]
+}
