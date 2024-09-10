@@ -1,14 +1,15 @@
 # AI-de-camp
 Playing with the words ["AI"](https://learn.microsoft.com/en-us/ai/playbook/technology-guidance/generative-ai/) and ["aide-de-camp"](https://en.wikipedia.org/wiki/Aide-de-camp), this repository is a learning experiment on how GenerativeAI could be leveraged in wargaming, starting with simple 1:72 toy soldier figurines and maybe, in the future, addressing proper tabletop wargaming scenario.
 
-<img src="docs/AI-de-camp%20design.png" alt="AI-de-camp" style="width:50%;">
-
-*You are a wargaming assistant, helping gamers to calculate modifiers of a firing toy soldier against a target toy soldier.*
+<div style="text-align: center;">
+    <img src="docs/AI-de-camp%20design.png" alt="AI-de-camp" style="width:50%;">
+    <p><em>You are a wargaming assistant, helping gamers to calculate modifiers of a firing toy soldier against a target toy soldier</em></p>
+</div>
 
 ## A (little) story first
 
 I loved playing with 1:72 toy soldiers as a kid, especially from Napoleonic Wars and WWII, yet not reaching the "proper" tabletop wargaming level proficiency.  
-40 years forward, my kids found my collection of unpainted toy soldiers and started playing with them, creating their own scenarios and rules. Rules so complex that a signle action would take ages to process.  
+40 years forward, my kids found my collection of unpainted toy soldiers and started playing with them, creating their own scenarios and rules. Rules so complex that a single action would take ages to process.  
 Therefore I had this idea: what if I could find a way to leverage AI to help them in their game, taking the opportunity to experiment with GenAI to create a Copilot, or even better, an AI-de-camp?
 
 ## (a) Plan
@@ -45,7 +46,7 @@ It's just a starting point, but it's a good one.
 
 ## aidecamp-console
 
-See the [prompt](aidecamp-console/) for the first console test leveraging [Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/overview/).
+See the [project folder](aidecamp-console/) for the first console test leveraging [Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/overview/).
 
 Implemented a simple console application to test the Semantic Kernel approach to the scenario.
 A test image is passed with the user prompt to a GPT-4o model, the [prompt](aidecamp-console/Prompts/HandleCombat/) is configured as a file base plugin.
@@ -60,3 +61,4 @@ The [project](aidecamp-plugins-native-console/) is an evolution of console test 
 - Leveraging Json response format so the application code can be more flexible in handling the response.
 
 While mine is a (very) simple example, it's a good starting point to understand how to leverage Semantic Kernel in a more complex scenario.
+
