@@ -21,7 +21,7 @@ public class AOAItest:BaseTest
     }
 
     [Fact]
-    public async Task NoImageNoPlugins()
+    public async Task NoImage_NoPromptNoPlugin()
     {
         var builder = Kernel.CreateBuilder();
         builder.Services.AddAzureOpenAIChatCompletion(
@@ -35,7 +35,6 @@ public class AOAItest:BaseTest
 
         kernel.ImportPluginFromType<TimeInformationPlugin>();
         kernel.ImportPluginFromType<TurnManagerPlugin>();
-        var prompts = kernel.ImportPluginFromPromptDirectory("Prompts");
 
         var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
 
@@ -71,7 +70,7 @@ public class AOAItest:BaseTest
     }
 
     [Fact]
-    public async Task DummyImageWithPlugins()
+    public async Task Image_IdentifySoldiers_PromptWithPlugin()
     {
         var builder = Kernel.CreateBuilder();
         builder.Services.AddAzureOpenAIChatCompletion(
@@ -85,7 +84,6 @@ public class AOAItest:BaseTest
 
         kernel.ImportPluginFromType<TimeInformationPlugin>();
         kernel.ImportPluginFromType<TurnManagerPlugin>();
-        var prompts = kernel.ImportPluginFromPromptDirectory("Prompts");
 
         var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
 
@@ -96,111 +94,9 @@ public class AOAItest:BaseTest
 
         var history = new ChatHistory();
 
-        string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "images", "test-munro.jpg");
-        var imageBytes = await File.ReadAllBytesAsync(imagePath);
-        var message = new ChatMessageContentItemCollection
-        {
-            new TextContent(@"Find the firing and target toy soldiers in the picture, then calculate the outcome of the wargame scenario."),
-            new ImageContent(imageBytes, "image/jpg")
-        };
-
-        history.AddUserMessage(message);
-
-        var result = await chatCompletionService.GetChatMessageContentAsync( 
-                history,
-                executionSettings: promptExecutionSettings,
-                kernel: kernel);
-
-        // Add the message from the agent to the chat history
-        history.AddMessage(result.Role, result.Content ?? string.Empty);
-
-         // Assert
-        Assert.NotNull(result);
-        Assert.Equal("Assistant", result.Role.ToString());
-        Assert.NotEmpty(result.Content);
-
-        // Print the results
-        output.WriteLine("Assistant > " + result);
-    }
-
-    [Fact]
-    public async Task ImageWithPlugins()
-    {
-        var builder = Kernel.CreateBuilder();
-        builder.Services.AddAzureOpenAIChatCompletion(
-            deploymentName: DeploymentName, 
-            endpoint: Endpoint,
-            apiKey: ApiKey
-            );
-        builder.Services.AddSingleton(this.loggerFactory);
-        builder.Services.AddSingleton<IPromptRenderFilter, PromptFilterTrace>();
-        var kernel = builder.Build();
-
-        kernel.ImportPluginFromType<TimeInformationPlugin>();
-        kernel.ImportPluginFromType<TurnManagerPlugin>();
-        kernel.ImportPluginFromPromptDirectory("Prompts");
-
-        var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
-
-        AzureOpenAIPromptExecutionSettings promptExecutionSettings  = new()
-        {
-        ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions,
-        };
-
-        var history = new ChatHistory();
-
-        string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "images", "test-3-20.jpg");
-        var imageBytes = await File.ReadAllBytesAsync(imagePath);
-        var message = new ChatMessageContentItemCollection
-        {
-            new TextContent(@"Identify the firing and target toy soldiers in the picture, then calculate the outcome of the wargame scenario."),
-            new ImageContent(imageBytes, "image/jpg")
-        };
-
-        history.AddUserMessage(message);
-
-        var result = await chatCompletionService.GetChatMessageContentAsync( 
-                history,
-                executionSettings: promptExecutionSettings,
-                kernel: kernel);
-
-        // Add the message from the agent to the chat history
-        history.AddMessage(result.Role, result.Content ?? string.Empty);
-
-         // Assert
-        Assert.NotNull(result);
-        Assert.Equal("Assistant", result.Role.ToString());
-        Assert.NotEmpty(result.Content);
-
-        // Print the results
-        output.WriteLine("Assistant > " + result);
-    }
-
-    [Fact]
-    public async Task ImageWithPlugin_IdentifySoldier()
-    {
-        var builder = Kernel.CreateBuilder();
-        builder.Services.AddAzureOpenAIChatCompletion(
-            deploymentName: DeploymentName, 
-            endpoint: Endpoint,
-            apiKey: ApiKey
-            );
-        builder.Services.AddSingleton(this.loggerFactory);
-        builder.Services.AddSingleton<IPromptRenderFilter, PromptFilterTrace>();
-        var kernel = builder.Build();
-
-        kernel.ImportPluginFromType<TimeInformationPlugin>();
-        kernel.ImportPluginFromType<TurnManagerPlugin>();
-        kernel.ImportPluginFromPromptDirectory("Prompts");
-
-        var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
-
-        AzureOpenAIPromptExecutionSettings promptExecutionSettings  = new()
-        {
-        ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions,
-        };
-
-        var history = new ChatHistory();
+        string promptFilePath = Path.Combine(Directory.GetCurrentDirectory(), "data", "prompts", "prompt.md");
+        string systemPrompt = await File.ReadAllTextAsync(promptFilePath);
+        history.AddSystemMessage(systemPrompt);
 
         string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "images", "test-3-20.jpg");
         var imageBytes = await File.ReadAllBytesAsync(imagePath);
@@ -209,7 +105,6 @@ public class AOAItest:BaseTest
             new TextContent(@"Identify the firing and target toy soldiers in this picture and return the JSON."),
             new ImageContent(imageBytes, "image/jpg")
         };
-
         history.AddUserMessage(message);
 
         var result = await chatCompletionService.GetChatMessageContentAsync( 
@@ -230,7 +125,7 @@ public class AOAItest:BaseTest
     }
 
     [Fact]
-    public async Task ImageNoPlugin_IdentifySoldier()
+    public async Task Image_IdentifySoldiers_PromptNoPlugin()
     {
         var builder = Kernel.CreateBuilder();
         builder.Services.AddAzureOpenAIChatCompletion(
@@ -244,7 +139,6 @@ public class AOAItest:BaseTest
 
         // kernel.ImportPluginFromType<TimeInformationPlugin>();
         // kernel.ImportPluginFromType<TurnManagerPlugin>();
-        // kernel.ImportPluginFromPromptDirectory("Prompts");
 
         var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
 
@@ -257,7 +151,6 @@ public class AOAItest:BaseTest
 
         string promptFilePath = Path.Combine(Directory.GetCurrentDirectory(), "data", "prompts", "prompt.md");
         string systemPrompt = await File.ReadAllTextAsync(promptFilePath);
-
         history.AddSystemMessage(systemPrompt);
         
         string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "images", "test-3-20.jpg");
@@ -267,7 +160,6 @@ public class AOAItest:BaseTest
             new TextContent(@"Identify the firing and target toy soldiers in this picture and return the JSON."),
             new ImageContent(imageBytes, "image/jpg")
         };
-
         history.AddUserMessage(message);
 
         var result = await chatCompletionService.GetChatMessageContentAsync( 
@@ -288,7 +180,7 @@ public class AOAItest:BaseTest
     }
 
     [Fact]
-    public async Task ImagePromptWithPlugin()
+    public async Task Image_PromptWithPlugin()
     {
         var builder = Kernel.CreateBuilder();
         builder.Services.AddAzureOpenAIChatCompletion(
@@ -313,7 +205,6 @@ public class AOAItest:BaseTest
 
         string promptFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "prompts", "prompt.md");
         string systemPrompt = await File.ReadAllTextAsync(promptFilePath);
-
         history.AddSystemMessage(systemPrompt);
         
         string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "images", "test-3-20.jpg");
@@ -324,7 +215,6 @@ public class AOAItest:BaseTest
             new ImageContent(imageBytes, "image/jpg"),
             new TextContent("20 cm")
         };
-
         history.AddUserMessage(message);
 
         var result = await chatCompletionService.GetChatMessageContentAsync( 
@@ -345,7 +235,7 @@ public class AOAItest:BaseTest
     }
 
     [Fact]
-    public async Task DummyImagePromptWithPlugin()
+    public async Task DummyImage_PromptWithPlugin()
     {
         var builder = Kernel.CreateBuilder();
         builder.Services.AddAzureOpenAIChatCompletion(
@@ -370,7 +260,6 @@ public class AOAItest:BaseTest
 
         string promptFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "prompts", "prompt.md");
         string systemPrompt = await File.ReadAllTextAsync(promptFilePath);
-
         history.AddSystemMessage(systemPrompt);
         
         string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "images", "test-munro.jpg");
@@ -380,7 +269,6 @@ public class AOAItest:BaseTest
             new TextContent(@"Identify the firing and target toy soldiers in this picture, then calculate the outcome of the wargame scenario."),
             new ImageContent(imageBytes, "image/jpg")
         };
-
         history.AddUserMessage(message);
 
         var result = await chatCompletionService.GetChatMessageContentAsync( 
@@ -401,7 +289,7 @@ public class AOAItest:BaseTest
     }
 
     [Fact]
-    public async Task JsonWithPlugins()
+    public async Task Json_PromptWithPlugin()
     {
         var builder = Kernel.CreateBuilder();
         builder.Services.AddAzureOpenAIChatCompletion(
@@ -415,7 +303,6 @@ public class AOAItest:BaseTest
 
         kernel.ImportPluginFromType<TimeInformationPlugin>();
         kernel.ImportPluginFromType<TurnManagerPlugin>();
-        var prompts = kernel.ImportPluginFromPromptDirectory("Prompts");
 
         var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
 
@@ -425,6 +312,10 @@ public class AOAItest:BaseTest
         };
 
         var history = new ChatHistory();
+        
+        string promptFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "prompts", "prompt.md");
+        string systemPrompt = await File.ReadAllTextAsync(promptFilePath);
+        history.AddSystemMessage(systemPrompt);
 
         var message = new ChatMessageContentItemCollection
         {
@@ -445,7 +336,6 @@ public class AOAItest:BaseTest
                 }
             }")
         };
-
         history.AddUserMessage(message);
 
         var result = await chatCompletionService.GetChatMessageContentAsync( 
