@@ -65,7 +65,7 @@ While mine is a (very) simple example, it's a good starting point to understand 
 
 ## aidecamp-app
 
-Everything is coming together: a very basic plain JS [webapp](aidecamp-app/webapp) project help the gamer take a snapshot of the wargame and post it to the API in [webapi](aidecamp-app/webapi) project, leveraging Semantic Kernel with the [new automatic function calling approach](https://devblogs.microsoft.com/semantic-kernel/new-function-calling-model-available-in-net-for-semantic-kernel/) and OpenTelemetry integration.
+Everything is coming together: a very basic plain JS [webapp](aidecamp-app/webapp) project help the gamer take a snapshot of the wargame and post it to the API in [webapi](aidecamp-app/webapi) project, leveraging Semantic Kernel with the [new (starting with 1.20) automatic function calling approach](https://devblogs.microsoft.com/semantic-kernel/new-function-calling-model-available-in-net-for-semantic-kernel/) and OpenTelemetry integration.
 
 Here is what the webapp looks like:
 
