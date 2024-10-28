@@ -28,6 +28,7 @@ Here are the progresses on this silly project:
 - [Simple prompt](#aidecamp-prompt)
 - [Semantic Kernel from a console](#aidecamp-console)
 - [Semantic Kernel with plugin(s) and automatic planning](#aidecamp-plugins-native-console)
+- [End-to-end scenario: webapp to API leveraging Semantic Kernel](#aidecamp-app)
 
 ## aidecamp-prompt
 
@@ -61,4 +62,20 @@ The [project](aidecamp-plugins-native-console/) is an evolution of console test 
 - Leveraging Json response format so the application code can be more flexible in handling the response.
 
 While mine is a (very) simple example, it's a good starting point to understand how to leverage Semantic Kernel in a more complex scenario.
+
+## aidecamp-app
+
+Everything is coming together: a very basic plain JS [webapp](aidecamp-app/webapp) project help the gamer take a snapshot of the wargame and post it to the API in [webapi](aidecamp-app/webapi) project, leveraging Semantic Kernel with the [new automatic function calling approach](https://devblogs.microsoft.com/semantic-kernel/new-function-calling-model-available-in-net-for-semantic-kernel/) and OpenTelemetry integration.
+
+Here is what the webapp looks like:
+
+<img src="docs/app test 20241028.png" alt="AI-de-camp web application" style="width:80%;">
+
+No shirts have been hurt in the making of this webapp: spare buttons seemed a more available option than using dices.
+
+Monitoring in Semantic Kernel is super rich, here is a sample of the telemetry:
+
+<img src="docs/e2e transaction details.png" alt="Open Telemetry applied to Semantic Kernel" style="width:80%;">
+
+Yes, it's a lot of data, but it's super useful to understand the flow of the application and the interaction with the Semantic Kernel. See [Observability in Semantic Kernel](https://devblogs.microsoft.com/semantic-kernel/observability-in-semantic-kernel/) for more details!
 

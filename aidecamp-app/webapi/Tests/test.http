@@ -1,0 +1,10 @@
+@filename = test{{$randomInt 0 1000}}.jpg
+post http://localhost:5153/combat
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="image"; filename="{{filename}}"
+Content-Type: image/jpeg
+
+< ./test-hexagon-smg-riflecrouched.jpg
+--boundary--
