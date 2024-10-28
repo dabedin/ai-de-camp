@@ -77,5 +77,5 @@ Monitoring in Semantic Kernel is super rich, here is a sample of the telemetry:
 
 <img src="docs/e2e transaction details.png" alt="Open Telemetry applied to Semantic Kernel" style="width:80%;">
 
-Yes, it's a lot of data, but it's super useful to understand the flow of the application and the interaction with the Semantic Kernel. See [Observability in Semantic Kernel](https://devblogs.microsoft.com/semantic-kernel/observability-in-semantic-kernel/) for more details!
+Yes, it's a lot of data, but it's super useful to understand the flow of the application interactions with the Semantic Kernel. See [Observability in Semantic Kernel](https://devblogs.microsoft.com/semantic-kernel/observability-in-semantic-kernel/) for more details!
 
