@@ -16,9 +16,9 @@ Therefore I had this idea: what if I could find a way to leverage AI to help the
 
 Here is a high-level plan for the project:
 - [x] Create a simple orchestration API, leveraging Semantic Kernel, with rich logging
-- [ ] Create a simple UX to ease up the tests from a mobile device
+- [x] Create a simple UX to ease up the tests from a mobile device
 - [ ] Address pain points:
-    - [ ] Estimate distance, from different point of views and perspectives
+    - [x] Estimate distance, from different point of views and perspectives
     - [ ] Handle dense/crowded scenarios with lots of toy soldiers ---> crucial for tabletop wargaming
     - [ ] Handle different terrains, i.e. in the garden
 
