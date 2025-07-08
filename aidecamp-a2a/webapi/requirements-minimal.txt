@@ -1,0 +1,7 @@
+# Minimal Dependencies for Mock Server Only
+# Install with: pip install -r requirements-minimal.txt
+# Use this for the mock server (mock_server.py) that returns hardcoded data
+# For the real server with Semantic Kernel and A2A support, use requirements.txt
+
+pydantic>=2.5.0
+python-dotenv>=1.0.0

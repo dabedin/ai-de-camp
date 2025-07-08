@@ -1,0 +1,26 @@
+# Real Server Dependencies (Semantic Kernel + A2A Protocol)
+# Install with: pip install -r requirements.txt
+# Use this for the full server (__main__.py) with Semantic Kernel and A2A support
+
+# Core AI and Semantic Kernel
+semantic-kernel>=1.30.0
+
+# A2A Protocol Support
+a2a-sdk>=0.2.9
+
+# Web Framework and Server
+fastapi>=0.104.0
+uvicorn>=0.24.0
+starlette>=0.27.0
+
+# File Upload and Image Processing
+python-multipart>=0.0.6
+pillow>=10.0.0
+
+# Data Validation and Configuration
+pydantic>=2.5.0
+python-dotenv>=1.0.0
+
+# HTTP Client and CLI
+httpx>=0.25.0
+click>=8.0.0
