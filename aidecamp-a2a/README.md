@@ -17,7 +17,7 @@ This is a Python implementation of the AI-de-camp wargaming application that sup
 | **Wargame Logic** | Python implementation of TurnManager combat calculations |
 | **Dual API** | Supports both traditional REST API and A2A protocol |
 | **Session Management** | Maintains conversation history for multi-turn interactions |
-| **File Management** | Saves uploaded images to data/uploads folder following .NET pattern |
+| **File Management** | Saves uploaded images to data/uploads folder following the previous sample pattern |
 
 ## Implementation Status
 
@@ -28,8 +28,8 @@ This is a Python implementation of the AI-de-camp wargaming application that sup
 - Webapp integration successful - frontend works unchanged
 - JSON response format matches original .NET implementation
 
-🚧 **A2A Protocol**: Framework ready, requires dependency installation
-- Agent structure created following A2A sample patterns
+✅ **A2A Protocol**: Framework ready, requires dependency installation
+- Agent structure created following A2A sample patterns at [Semantic Kernel A2A Sample](https://github.com/a2aproject/a2a-samples/tree/main/samples/python/agents/semantickernel)
 - AgentExecutor implemented for A2A integration
 - Server architecture supports both REST and A2A protocols
 
@@ -82,8 +82,6 @@ python __main__.py --host 0.0.0.0 --port 10020
 ```
 
 ## API Compatibility
-
-### Traditional REST API ✅ WORKING
 
 The server provides backward-compatible endpoints for the existing webapp:
 
@@ -141,18 +139,14 @@ python __main__.py --host 0.0.0.0 --port 10020
 
 ## Testing
 
-### ✅ Webapp Integration Tested
-
-![Webapp Screenshot](https://github.com/user-attachments/assets/c2800547-e564-4c97-be84-3df2b9ef3fda)
-
 The webapp works with both the mock server (testing) and real server:
 
-#### Testing with Mock Server:
+### Testing with Mock Server:
 1. Start the mock server: `python mock_server.py`
 2. Update webapp to point to `http://localhost:10020/api/combat`
 3. Upload any image - mock server returns sample data for testing
 
-#### Production with Real Server:
+### Production with Real Server:
 1. Configure Azure OpenAI credentials in `.env`
 2. Start the real server: `python __main__.py`
 3. Upload toy soldier images - actual AI analysis with Semantic Kernel
@@ -195,19 +189,6 @@ The Python implementation maintains the exact same combat calculation logic:
 4. **Dice Roll**: Random 1-20
 5. **Hit Calculation**: Hit if dice roll > (firing + target + distance modifiers)
 
-## Comparison with Original
-
-| Aspect | Original (.NET) | A2A Implementation (Python) |
-|--------|----------------|----------------------------|
-| **Framework** | ASP.NET Core | Python with FastAPI/Starlette |
-| **AI Service** | Semantic Kernel .NET | Semantic Kernel Python |
-| **Protocol** | REST only | REST + A2A |
-| **Image Processing** | Azure OpenAI Vision | Azure OpenAI Vision |
-| **Combat Logic** | C# TurnManager | Python TurnManager (exact port) |
-| **Data Models** | C# classes | Pydantic models |
-| **API Compatibility** | ✅ Maintained | ✅ Fully compatible |
-| **Session State** | Stateless | Session-based memory |
-
 ## Files Structure
 
 ```
@@ -226,12 +207,3 @@ aidecamp-a2a/
         └── prompts/
             └── prompt.md # System prompt for image analysis
 ```
-
-## Next Steps
-
-1. **✅ Traditional API**: Fully working and tested
-2. **🔄 A2A Protocol**: Install dependencies and test with A2A inspector
-3. **🔄 Image Processing**: Integrate actual Semantic Kernel vision capabilities
-4. **🔄 Production**: Configure with Azure OpenAI credentials
-
-The core migration is complete - the Python implementation successfully provides the same functionality as the original .NET version while adding A2A protocol support for agent-to-agent interactions.
