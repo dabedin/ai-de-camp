@@ -29,6 +29,7 @@ Here are the progresses on this silly project:
 - [Semantic Kernel from a console](#aidecamp-console)
 - [Semantic Kernel with plugin(s) and automatic planning](#aidecamp-plugins-native-console)
 - [End-to-end scenario: webapp to API leveraging Semantic Kernel](#aidecamp-app)
+- [Python implementation with A2A protocol support](#aidecamp-a2a)
 
 ## aidecamp-prompt
 
@@ -78,4 +79,17 @@ Monitoring in Semantic Kernel is super rich, here is a sample of the telemetry:
 <img src="docs/e2e transaction details.png" alt="Open Telemetry applied to Semantic Kernel" style="width:80%;">
 
 Yes, it's a lot of data, but it's super useful to understand the flow of the application interactions with the Semantic Kernel. See [Observability in Semantic Kernel](https://devblogs.microsoft.com/semantic-kernel/observability-in-semantic-kernel/) for more details!
+
+## aidecamp-a2a
+
+The [project](aidecamp-a2a/) is a Python implementation that brings the AI-de-camp wargaming application to the A2A (Agent-to-Agent) protocol ecosystem while maintaining full backward compatibility.
+
+Key features of this implementation:
+- **Dual API Support**: Maintains the existing `/api/combat` REST endpoint for webapp compatibility, while adding A2A protocol support at `/a2a`
+- **Python + Semantic Kernel**: Complete port from C# to Python using Semantic Kernel for AI orchestration
+- **A2A Protocol Integration**: Enables agent-to-agent communication following A2A standards, allowing the wargaming assistant to interact with other AI agents
+- **Session Management**: Supports multi-turn conversations and maintains context across interactions
+- **Identical Functionality**: Same image analysis, combat calculations, and wargame logic as the original implementation
+
+The A2A protocol endpoint enables the wargaming assistant to be discovered and used by other AI agents, opening possibilities for automated wargaming scenarios and multi-agent interactions. The agent can be inspected and tested using A2A Inspector tools, providing a standardized interface for agent-to-agent communication in wargaming contexts.
 
