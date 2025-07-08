@@ -1,4 +1,4 @@
-# AI de Camp - A2A Implementation
+# AI-de-Camp - A2A Implementation
 
 This is a Python implementation of the AI de Camp wargaming application that supports both the traditional REST API and the A2A (Agent-to-Agent) protocol using Semantic Kernel.
 
