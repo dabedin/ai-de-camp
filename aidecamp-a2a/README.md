@@ -121,7 +121,7 @@ The server provides backward-compatible endpoints for the existing webapp:
 }
 ```
 
-### A2A Protocol (Future)
+### A2A Protocol
 
 The A2A (Agent-to-Agent) protocol is available at the `/a2a` endpoint:
 
@@ -159,6 +159,37 @@ curl -X POST -F "image=@test-image.jpg" http://localhost:10020/api/combat
 
 # Expected response: JSON with scenario and outcome
 ```
+
+### A2A Inspector Testing
+
+For testing the A2A protocol implementation, you can use the [A2A Inspector](https://github.com/a2aproject/a2a-inspector) tool. The recommended approach is to use the Docker container:
+
+#### Using Docker Container
+
+1. **Start the A2A server** (ensure it's running on port 10020):
+```bash
+cd aidecamp-a2a/webapi
+pip install -r requirements.txt
+python __main__.py --host 0.0.0.0 --port 10020
+```
+
+2. **Run A2A Inspector in Docker**:
+```bash
+# Pull and run the A2A inspector container
+docker run -p 8080:8080 a2aproject/a2a-inspector
+```
+
+3. **Configure A2A Inspector**:
+   - Open A2A Inspector in your browser at `http://localhost:8080`
+   - Use the A2A endpoint: `http://host.docker.internal:10020/a2a`
+   - The `host.docker.internal` hostname allows the Docker container to access services running on the host machine
+
+4. **Test the A2A protocol**:
+   - Upload toy soldier images through the A2A Inspector interface
+   - Verify multi-turn conversations and session management
+   - Test streaming responses and agent-to-agent communication features
+
+> **Note**: The A2A protocol requires the full server with Semantic Kernel dependencies. Make sure you've installed the complete requirements.txt and configured Azure OpenAI credentials in your `.env` file.
 
 ## Data Models
 
